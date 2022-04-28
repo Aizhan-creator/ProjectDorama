@@ -1,0 +1,33 @@
+.main-container {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+}
+
+.invisible{
+  display: none;
+}
+
+.wrap{
+  width: 100%;
+  height: auto;
+
+}
+button.b-search{
+  cursor: pointer;
+}
+.wrap-center{
+  width: 1000px;
+  height: auto;
+  margin: auto;
+  background-color: white;
+}
+.header{
+  width: 1000px;
+  height: auto;
+  background-color: pink;
+}
+div {
+  display: block;
+}
+

@@ -1,0 +1,42 @@
+<div class = "wrap" >
+  <div class = "wrap-center">
+    <app-dorama-list-header></app-dorama-list-header>
+    <div class="user-cont" *ngIf="user">
+      <div class="user-page">
+        <div class="user-info">
+          <img class="user-img" src="https://i.pinimg.com/564x/58/ee/09/58ee092f0fff5f025cf9230f55bcd818.jpg">
+          <div class="user-text">
+            <div style="margin-bottom: 15px"><b style="font-size: 30px;">{{user.user_instance.username}}</b></div>
+            <div><b>Registration date:</b> {{user.user_instance.date_joined}}</div>
+          </div>
+        </div>
+        <div class="user-dorama">
+          <div class="user-dorama-text">dorama List</div>
+          <div *ngIf="doramaList.length == 0" class="user-dorama-list">Empty</div>
+          <div *ngIf="doramaList.length != 0">
+            <div *ngFor="let dorama of doramaList">
+              <div class="user-dorama-list-cont">
+                <div class="user-dorama-list" [routerLink]="['../title/', dorama.name]">
+                  <img [src]="dorama.photo" height="60px">
+                  <div>{{dorama.name}}</div>
+                </div>
+                <div class="fa fa-close" (click)="remotedorama(dorama.id)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!--        <div class="user-dorama-liked">-->
+<!--          <div class="user-dorama-liked-text">Liked dorama</div>-->
+<!--          <div *ngIf="likeddorama.length == 0" class="user-dorama-list">Empty</div>-->
+<!--          <div *ngIf="likeddorama.length != 0">-->
+<!--            <div *ngFor="let dorama in likeddorama">-->
+<!--              <div class="user-dorama-list">-->
+<!--                {{dorama}}-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+</div>

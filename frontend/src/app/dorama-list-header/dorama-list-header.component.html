@@ -1,0 +1,77 @@
+<header class = "header" >
+  <div class = "auth row middle" style="width: 960px; height: 40px">
+    <a href="#" class="logo">
+      <img src="https://sun9-85.userapi.com/c836436/v836436336/28e01/XHvP4FHX0IY.jpg" >
+    </a>
+
+    <div class="search-wrap fx-1">
+      <form id="quicksearch" method="post">
+        <input type="hidden" name="do" value="search">
+        <input type = "hidden" name="subaction" value="search">
+        <div class="search-box" >
+          <input id="story" name="story" placeholder="Search for" type="text" autocomplete="off" [(ngModel)]="name">
+          <button type="submit" title="Find" class="b-search" [routerLink]="['/title', name]">
+                <span class="fa fa-search">
+                </span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="login-btns">
+      <button routerLink="/login" class="btn-login" *ngIf="!this.get_userService().token" >Войти</button>
+      <button *ngIf="this.get_userService().token" class="btn-register" routerLink="/user"> Welcome, user</button>
+      <button routerLink="/" class="btn-login" *ngIf="this.get_userService().token" (click)="LogOut()">LogOut</button>
+    </div>
+  </div>
+
+  <div class="header-two" >
+    <div *ngFor="let i of dorama" class="dorama-header">
+  <!--    <h6 *ngIf="i.name">-->
+  <!--      {{i.name}}-->
+  <!--    </h6>-->
+      <div *ngIf="i.path" class="dorama-block">
+        <div class="row">
+          <div class="img-wrap">
+          <img [src]=i.path width="130" height="200">
+          <div style="text-align: center; font-family: Helvetica, sans-serif; color: azure" class="asd">{{i.name}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-three" >
+    <ul class="hr">
+      <li>
+        <a routerLink="/films">Главная</a>
+      </li>
+      <li>
+        <a target="_blank" rel="noopener" href="https://doramy.club/novinki">Новинки</a>
+      </li>
+      <li>
+        <a target="_blank" rel="noopener" href="https://doramy.club/serialy">Сериалы</a>
+      </li>
+      <li>
+        <a target="_blank" rel="noopener" href="https://doramy.club/filmy">Фильмы</a>
+      </li>
+      <li>
+        <a target="_blank" rel="noopener" href="https://doramy.club/top">Топ 10</a>
+      </li>
+      <li>
+        <a target="_blank" rel="noopener" href="https://doramy.club/strana/yuzhnaya-koreya">Корейские</a>
+      </li>
+      <li>
+        <a target="_blank" rel="noopener" href="https://doramy.club/strana/yaponiya">Японские</a>
+      </li>
+      <li>
+        <a target="_blank" rel="noopener" href="https://doramy.club/strana/kitaj">Китайские</a>
+      </li>
+      <li>
+        <a target="_blank" rel="noopener" href="https://doramy.club/strana/tailand">Тайские</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+

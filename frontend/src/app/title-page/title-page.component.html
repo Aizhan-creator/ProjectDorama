@@ -1,0 +1,75 @@
+<div class = "wrap" >
+  <div class = "wrap-center">
+
+    <app-dorama-list-header></app-dorama-list-header>
+    <div class="title-container">
+      <div *ngIf="dorama && visitorLoaded">
+        <div class="info">
+          <div class="img-cont">
+            <img [src]="dorama.photo">
+            <div class="rating">
+              <div *ngFor="let num of nums" (click)="rate(num)">
+                <input class="fa fa-star" type="radio" [(ngModel)]="num > rating">
+              </div>
+            </div>
+          </div>
+          <div class="info-text">
+            <div class="title-box">
+              <h1 class="title">{{dorama.name}}</h1>
+              <span>{{dorama.name}}</span>
+            </div>
+            <div>
+              <div><b>Release Year</b> {{dorama.year}}</div>
+              <div><b>Genres</b> <a *ngFor="let genre of dorama.genres"> {{genre.name}}</a> </div>
+              <div><b>Episodes</b> {{dorama.episodes}}</div>
+              <div><b>Duration</b> {{dorama.duration}} min.</div>
+              <div><b>Rating</b> {{dorama.mark}}</div>
+            </div>
+            <div class="button-section">
+              <a class="button-watch" (click)="goToPlayer()">
+                <span class="fa fa-play"></span>
+                Watch
+              </a>
+              <a class="add-to-list" (click)="addToList(dorama.id)" *ngIf="!isAdded">
+                <span class="fa fa-plus"></span>
+                Add to List
+              </a>
+              <a class="added-to-list" (click)="removeFromList(dorama.id)" *ngIf="isAdded">
+                <span class="fa fa-check"></span>
+                Added
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="description">
+          {{dorama.description}}
+        </div>
+        <div class="player">
+          <iframe src="https://www.youtube.com/embed/KeGctT6lJCU"
+                  title="dorama" frameborder="0" allow="accelerometer;
+              autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+          </iframe>
+        </div>
+        <div class="comment">
+          <textarea class="leave-comment" placeholder="Оставьте комментарий" rows="5" [(ngModel)]="this.text">
+
+          </textarea>
+          <div class="bt-com">
+            <button (click)="confirm(dorama.id, this.text)">Подтвердить</button>
+            <button>Отмена</button>
+          </div>
+        </div>
+        <div class="comments">
+          <div *ngFor="let comment of dorama.comments">
+            <app-comment [comment]="comment"
+                         [visitorComment]="visitor && visitor.user_instance.username == comment.user.user_instance.username">
+            </app-comment>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+
+  </div>
+</div>
+
